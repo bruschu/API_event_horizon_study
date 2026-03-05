@@ -12,23 +12,23 @@ Phase 1: Local & GitHub Setup
 
 Phase 2: The Docker "Skeleton"
 
-[ ] Create a requirements.txt (start with fastapi, uvicorn, sqlalchemy, mysql-connector-python).
+[X] Create a requirements.txt (start with fastapi, uvicorn, sqlalchemy, mysql-connector-python).
 
-[ ] Write an optimized Dockerfile (remember the layer order: copy requirements first, then install, then copy code).
+[X] Write an optimized Dockerfile (remember the layer order: copy requirements first, then install, then copy code).
 
-[ ] Write a docker-compose.yml with two services: app and db.
+[X] Write a docker-compose.yml with two services: app and db.
 
-[ ] Configure a Docker Volume for the MySQL data to ensure persistence.
+[X] Configure a Docker Volume for the MySQL data to ensure persistence.
 
-[ ] Create a .env file for your database credentials (and don't push it to GitHub!).
+[X] Create a .env file for your database credentials (and don't push it to GitHub!).
 
 Phase 3: Database & Backend Logic
 
-[ ] Set up the SQLAlchemy Base and engine connection.
+[X] Set up the SQLAlchemy Base and engine connection.
 
-[ ] Define your Models (Event and Attendee) with their relationships.
+[X] Define your Models (Event and Attendee) with their relationships.
 
-[ ] Create a schemas.py (Pydantic models) for data validation.
+[X] Create a schemas.py (Pydantic models) for data validation.
 
 [ ] Implement CRUD routes (Create, Read, Update, Delete) for Events.
 
@@ -57,3 +57,25 @@ Build the Docker image.
 Run the tests automatically on every push.
 
 [ ] Set up GitHub Secrets for any sensitive data needed during the CI build.
+
+
+-----------------------------------------------------------------------------
+
+Create the Virtual Environment:
+python3 -m venv .venv
+
+Activate it:
+source .venv/bin/activate
+
+Upgrade Pip and Install Base Libraries:
+pip install --upgrade pip
+pip install fastapi uvicorn sqlalchemy mysql-connector-python
+
+Create your initial requirements.txt:
+pip freeze > requirements.txt
+
+
+-----------------------------------------------------------------------------
+
+Run Uvicorn
+uvicorn app.main:app --reload

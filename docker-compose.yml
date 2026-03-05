@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql  
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD} 
+      MYSQL_DATABASE: ${MYSQL_DB_NAME}
+    ports:
+      - "3306:3306"
+
+  api:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: mysql+mysqlconnector://root:${MYSQL_PASSWORD}@db:3306/${MYSQL_DB_NAME}
+    ports:
+      - "8000:8000"
+
+volumes:
+  db_data: 
