@@ -32,7 +32,7 @@ Phase 3: Database & Backend Logic
 
 [X] Implement CRUD routes (Create, Read, Update, Delete) for Events.
 
-[ ] Create a route to "Register" an attendee to a specific event.
+[X] Create a route to "Register" an attendee to a specific event.
 
 Phase 4: Migrations & Persistence
 
@@ -58,8 +58,7 @@ Run the tests automatically on every push.
 
 [ ] Set up GitHub Secrets for any sensitive data needed during the CI build.
 
-
------------------------------------------------------------------------------
+---
 
 Create the Virtual Environment:
 python3 -m venv .venv
@@ -74,8 +73,16 @@ pip install fastapi uvicorn sqlalchemy mysql-connector-python
 Create your initial requirements.txt:
 pip freeze > requirements.txt
 
-
------------------------------------------------------------------------------
+---
 
 Run Uvicorn
 uvicorn app.main:app --reload
+
+---
+
+Docker
+
+Building and Starting -> docker compose up --build
+Checking the Status -> docker compose ps
+Reading the Logs -> docker compose logs -f app
+Stopping and Cleaning Up -> Stopping and Cleaning Up
