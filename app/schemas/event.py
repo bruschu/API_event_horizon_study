@@ -1,12 +1,17 @@
 from datetime import datetime
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class EventBase(BaseModel):
     name: str
     date: datetime
-    location: str
+    location: str = Field(
+        ...,  # The ellipsis means this field is REQUIRED
+        max_length=200,
+        description="The physical or virtual address where the event takes place",
+        examples=["New York City", "Zoom Meeting"],
+    )
 
 
 class EventCreate(EventBase):

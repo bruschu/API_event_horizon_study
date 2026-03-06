@@ -30,7 +30,7 @@ Phase 3: Database & Backend Logic
 
 [X] Create a schemas.py (Pydantic models) for data validation.
 
-[ ] Implement CRUD routes (Create, Read, Update, Delete) for Events.
+[X] Implement CRUD routes (Create, Read, Update, Delete) for Events.
 
 [ ] Create a route to "Register" an attendee to a specific event.
 
