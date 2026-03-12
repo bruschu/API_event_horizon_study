@@ -21,7 +21,7 @@ class EventCreate(EventBase):
 class EventResponde(EventBase):
     id: int
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
 
 

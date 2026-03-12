@@ -36,17 +36,17 @@ Phase 3: Database & Backend Logic
 
 Phase 4: Migrations & Persistence
 
-[ ] Initialize Alembic inside the container.
+[X] Initialize Alembic inside the container.
 
-[ ] Generate your first migration script (revision --autogenerate).
+[X] Generate your first migration script (revision --autogenerate).
 
-[ ] Run the migration to create the tables in MySQL.
+[X] Run the migration to create the tables in MySQL.
 
-[ ] Test Persistence: Stop containers, docker compose down, bring them up again, and check if the data is still there.
+[X] Test Persistence: Stop containers, docker compose down, bring them up again, and check if the data is still there.
 
 Phase 5: Automation (The "DevOps" Touch)
 
-[ ] Create a tests/ folder and write at least two basic tests using Pytest.
+[X] Create a tests/ folder and write at least two basic tests using Pytest.
 
 [ ] Set up a GitHub Actions workflow (.github/workflows/main.yml).
 
@@ -86,3 +86,13 @@ Building and Starting -> docker compose up --build
 Checking the Status -> docker compose ps
 Reading the Logs -> docker compose logs -f app
 Stopping and Cleaning Up -> Stopping and Cleaning Up
+Test with pytest -> docker compose exec api pytest
+
+
+---
+
+Alembic
+
+Initialization -> docker compose exec api alembic init alembic
+Autogenerate (Every time you change models.py) -> docker compose exec api alembic revision --autogenerate -m "Description of change"
+Upgrade -> docker compose exec api alembic upgrade head

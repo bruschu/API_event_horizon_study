@@ -17,7 +17,7 @@ class AttendeeResponse(AttendeeBase):
     event_id: int
     event: EventBase | None = None
 
-    class Config:
+    class ConfigDict:
         from_attributes = True
 
 
