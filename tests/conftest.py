@@ -1,9 +1,10 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from app.core.database import Base, engine, get_db
+from app.core.database import get_db
 from app.core.security import create_access_token
 from app.main import app
+from app.model.user import User
 
 
 @pytest.fixture
@@ -48,13 +49,10 @@ def auth_headers():
     return {"Authorization": f"Bearer {access_token}"}
 
 
-@pytest.fixture(scope="session", autouse=True)
-def setup_database():
-    # 1. Create tables
-    Base.metadata.create_all(bind=engine)
-
-    # 2. Run the tests
-    yield
-
-    # 3. Clean up
-    Base.metadata.drop_all(bind=engine)
+@pytest.fixture
+def test_user(db_session):
+    # Create the user that matches the 'sub' in your auth_headers
+    user = User(email="test@example.com", password="hashed_password")
+    db_session.add(user)
+    db_session.commit()
+    return user

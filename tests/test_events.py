@@ -1,4 +1,4 @@
-def test_create_event(override_db, client, auth_headers):
+def test_create_event(override_db, client, auth_headers, test_user):
     # Print all registered paths
     for route in client.app.routes:
         if hasattr(route, "path"):
@@ -19,7 +19,7 @@ def test_create_event(override_db, client, auth_headers):
     assert "id" in data
 
 
-def test_create_event_missing_location(override_db, client, auth_headers):
+def test_create_event_missing_location(override_db, client, auth_headers, test_user):
     response = client.post(
         "/event/",
         json={
@@ -35,7 +35,7 @@ def test_create_event_missing_location(override_db, client, auth_headers):
     assert data["detail"][0]["msg"] == "Field required"
 
 
-def test_create_event_invalid_name_type(override_db, client, auth_headers):
+def test_create_event_invalid_name_type(override_db, client, auth_headers, test_user):
     response = client.post(
         "/event/",
         json={
