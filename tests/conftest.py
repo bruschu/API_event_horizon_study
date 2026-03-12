@@ -2,7 +2,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.core.database import get_db
-from app.core.security import create_access_token
+from app.core.security import create_access_token, get_password_hash
 from app.main import app
 from app.model.user import User
 
@@ -52,7 +52,8 @@ def auth_headers():
 @pytest.fixture
 def test_user(db_session):
     # Create the user that matches the 'sub' in your auth_headers
-    user = User(email="test@example.com", hashed_password="hashed_password")
+    user = User(
+        email="test@example.com", hashed_password=get_password_hash("securepassword123")
+    )
     db_session.add(user)
-    db_session.commit()
     return user
