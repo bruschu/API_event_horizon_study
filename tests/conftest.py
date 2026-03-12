@@ -52,7 +52,7 @@ def auth_headers():
 @pytest.fixture
 def test_user(db_session):
     # Create the user that matches the 'sub' in your auth_headers
-    user = User(email="test@example.com", password="hashed_password")
+    user = User(email="test@example.com", hashed_password="hashed_password")
     db_session.add(user)
     db_session.commit()
     return user
