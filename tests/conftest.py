@@ -55,7 +55,7 @@ def test_user(db_session):
     email = "test@example.com"
     user = db_session.query(User).filter(User.email == email).first()
     if not user:
-        user = User(email=email, password="securepassword123")
+        user = User(email=email, hashed_password="securepassword123")
         db_session.add(user)
         db_session.commit()
     return user
