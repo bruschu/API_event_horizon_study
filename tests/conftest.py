@@ -2,7 +2,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from app.core.database import get_db
-from app.core.security import create_access_token
+from app.core.security import create_access_token, get_password_hash
 from app.main import app
 from app.model.user import User
 
@@ -55,7 +55,7 @@ def test_user(db_session):
     email = "test@example.com"
     user = db_session.query(User).filter(User.email == email).first()
     if not user:
-        user = User(email=email, hashed_password="securepassword123")
+        user = User(email=email, hashed_password=get_password_hash("securepassword123"))
         db_session.add(user)
         db_session.commit()
     return user
