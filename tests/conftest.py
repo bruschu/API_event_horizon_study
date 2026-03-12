@@ -8,7 +8,7 @@ from app.model.user import User
 
 
 @pytest.fixture
-def db_session():
+def db_session(scope="function"):
     # 1. Setup: get the session
     db_generator = get_db()
     session = next(db_generator)
@@ -53,9 +53,9 @@ def auth_headers():
 def test_user(db_session):
     # Create the user that matches the 'sub' in your auth_headers
     email = "test@example.com"
-    user = db_session.query(User).filter(User.email == email).first()
-    if not user:
-        user = User(email=email, hashed_password=get_password_hash("securepassword123"))
-        db_session.add(user)
-        db_session.commit()
-    return user
+    # user = db_session.query(User).filter(User.email == email).first()
+    # if not user:
+    user = User(email=email, hashed_password=get_password_hash("securepassword123"))
+    db_session.add(user)
+    db_session.commit()
+    # return user
