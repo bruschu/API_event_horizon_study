@@ -40,7 +40,7 @@ jobs:
       - name: Run Tests
         env:
           # Pydantic Settings will automatically use these over the .env file
-          DATABASE_URL: mysql+pymysql://root:rootpassword@127.0.0.1:3306/test_db
+          DATABASE_URL: mysql+mysqlconnector://root:rootpassword@127.0.0.1:3306/test_db
           SECRET_KEY: ci_test_secret_key_123
           ALGORITHM: HS256
           ACCESS_TOKEN_EXPIRE_MINUTES: 30
