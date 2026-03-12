@@ -48,7 +48,7 @@ Phase 5: Automation (The "DevOps" Touch)
 
 [X] Create a tests/ folder and write at least two basic tests using Pytest.
 
-[ ] Set up a GitHub Actions workflow (.github/workflows/main.yml).
+[X] Set up a GitHub Actions workflow (.github/workflows/main.yml).
 
 [ ] Configure the workflow to:
 
