@@ -1,4 +1,8 @@
 def test_create_event(override_db, client, auth_headers):
+    # Print all registered paths
+    for route in client.app.routes:
+        if hasattr(route, "path"):
+            print(f"DEBUG ROUTE: {route.path}")
     response = client.post(
         "/event/",
         json={
