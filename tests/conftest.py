@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from app.core.database import get_db
+from app.core.database import Base, engine, get_db
 from app.core.security import create_access_token
 from app.main import app
 
@@ -46,3 +46,15 @@ def client():
 def auth_headers():
     access_token = create_access_token(data={"sub": "test@example.com"})
     return {"Authorization": f"Bearer {access_token}"}
+
+
+@pytest.fixture(scope="session", autouse=True)
+def setup_database():
+    # 1. Create tables
+    Base.metadata.create_all(bind=engine)
+
+    # 2. Run the tests
+    yield
+
+    # 3. Clean up
+    Base.metadata.drop_all(bind=engine)
