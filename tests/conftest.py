@@ -8,7 +8,7 @@ from app.model.user import User
 
 
 @pytest.fixture
-def db_session(scope="function"):
+def db_session():
     # 1. Setup: get the session
     db_generator = get_db()
     session = next(db_generator)
