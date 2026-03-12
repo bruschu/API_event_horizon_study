@@ -56,4 +56,5 @@ def test_user(db_session):
         email="test@example.com", hashed_password=get_password_hash("securepassword123")
     )
     db_session.add(user)
+    db_session.commit()
     return user
