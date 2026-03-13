@@ -1,4 +1,5 @@
 🌌 API Event Horizon
+
 API Event Horizon is a high-performance backend system built with FastAPI designed to handle event management, user registration, and attendee tracking. This project was developed as a deep-dive study into modern backend architecture, containerization, and automated testing pipelines.
 
 🚀 Key Features
