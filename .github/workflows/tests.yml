@@ -35,8 +35,8 @@ jobs:
       - name: Run Tests inside Docker
         env:
           # Pydantic Settings will automatically use these over the .env file
-          DATABASE_URL: mysql+mysqlconnector://root:rootpassword@127.0.0.1:3306/test_db
-          SECRET_KEY: this-is-a-very-long-and-secure-secret-key-123456789
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           ALGORITHM: HS256
           ACCESS_TOKEN_EXPIRE_MINUTES: 30
         run: |

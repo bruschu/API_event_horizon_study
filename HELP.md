@@ -50,7 +50,7 @@ Phase 5: Automation (The "DevOps" Touch)
 
 [X] Set up a GitHub Actions workflow (.github/workflows/main.yml).
 
-[ ] Configure the workflow to:
+[X] Configure the workflow to:
 
 Build the Docker image.
 
