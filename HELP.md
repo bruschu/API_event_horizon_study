@@ -56,7 +56,7 @@ Build the Docker image.
 
 Run the tests automatically on every push.
 
-[ ] Set up GitHub Secrets for any sensitive data needed during the CI build.
+[X] Set up GitHub Secrets for any sensitive data needed during the CI build.
 
 ---
 
